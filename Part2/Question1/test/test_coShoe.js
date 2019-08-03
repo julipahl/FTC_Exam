@@ -1,6 +1,6 @@
 // import the contract artifacts
 
-const CoShoe = artifacts.require('./CoShoe.sol') 
+const CoShoe = artifacts.require('CoShoe') 
 
 
 contract('CoShoe', accounts => {
@@ -10,11 +10,6 @@ contract('CoShoe', accounts => {
   const name = 'Julika'
   const image = 'image.com'
   const price = web3.utils.toWei('0.5', 'ether')
-
-  beforeEach(async function() {
-    token = await CoShoe.new();
-  }); // need to use async and await together
-  // basically we want to wait for that functio to run before going to the next functions
 
   // test whether 100 tokens are minted on deployment 
 
@@ -27,7 +22,7 @@ contract('CoShoe', accounts => {
 
     // check that they are equal to 100
 
-    assert.equal(tokenCounter, 100, 'did not mint 100 tokens on deployment');
+    assert.equal(tokenCounter, 100, 'did not mint 100 tokens on deployment')
     })
 
     // test that buyShoe​ correctly transfers ownership, sets the name and the image, sets sold,and updates ​soldShoes​ count
