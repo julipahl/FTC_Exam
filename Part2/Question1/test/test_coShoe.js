@@ -3,7 +3,7 @@
 const CoShoe = artifacts.require('./CoShoe.sol') 
 
 
-contract('CoShoe', function (accounts) {
+contract('CoShoe', accounts => {
   // test starts here
 
   // predefined variables
@@ -11,9 +11,14 @@ contract('CoShoe', function (accounts) {
   const image = 'image.com'
   const price = web3.utils.toWei('0.5', 'ether')
 
+  beforeEach(async function() {
+    token = await CoShoe.new();
+  }); // need to use async and await together
+  // basically we want to wait for that functio to run before going to the next functions
+
   // test whether 100 tokens are minted on deployment 
 
-  it("mint 100 tokens on deployment", function() {
+  it("mint 100 tokens on deployment", async function() {
     
     let CoShoeInstance = await CoShoe.deployed()
 
