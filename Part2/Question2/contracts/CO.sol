@@ -28,8 +28,6 @@ contract CO is Ownable {
         _symbol = symbol;
         _decimals = decimals;
 
-        _balances[msg.sender] = _totalSupply; //give owner the total supply of tokens at first
-
         _contractOwner = msg.sender;
     }
 
@@ -116,6 +114,7 @@ contract CO is Ownable {
         require(msg.value == currentPrice, "not the correct amount");
 
         _balances[_account] = _balances[_account].add(_tokenAmount);
+        // already increased the number of tokens in the buyPrice functions, so do not need to do that again
     }
 
   // ​burn​ function that can only be called by the ​owner​ (i.e., only theowner​ can sell tokens back to the curve and withdraw the funds).
@@ -125,7 +124,8 @@ contract CO is Ownable {
         uint currentPrice = sellPrice(_tokenAmount);
         require(msg.value == currentPrice, "not the correct amount");
 
-        _balances[_account] = _balances[_account].add(_tokenAmount);
+        address(msg.sender).transfer(msg.value); // pay ether to contract owner for selling tokens back to curve
+        _balances[_account] = _balances[_account].sub(_tokenAmount);
     }
 
     // function that will self destruct the contract
