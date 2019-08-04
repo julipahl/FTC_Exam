@@ -1,3 +1,5 @@
+## Question 3
+
 An ICO stands for Intial Coin Offering. This is a way to raise funding using cryptocurrencies. This type of fundingis often used with projects that have not fully developed their idea/product/service yet. Investors invest in these in hopes that they recieve good returns as early supporters of that start-up, they expect/hope the company will become successfull so that the underlying tokens increase in value. One key difference between ICOs and traditional IPOs (initial public offering) is that investing in an ICO won't result in you having ownership in that company, which is one of the main attarctions for the entrepeneurs as they keep for control. To do an ICO one needs to:
 * write a whitepaper outlining your idea/platform
 * raise funding in crowdsales
