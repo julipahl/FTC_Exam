@@ -11,7 +11,7 @@ contract('CoShoe', accounts => {
   const image = 'image.com'
   const price = web3.utils.toWei('0.5', 'ether')
 
-  // const truffleAssert = require('truffle-assertions');
+  const truffleAssert = require('truffle-assertions');
 
   // test whether 100 tokens are minted on deployment 
 
@@ -41,9 +41,9 @@ contract('CoShoe', accounts => {
       { value: price, from: accounts[0] }
     )
     // get the number of shoes sold 
-      let soldCounter = await CoShoeInstance.coShoeCount()
+      let soldCounter = await CoShoeInstance.shoesSoldCount()
     
-      assert.equal(soldCounter, 1, "Shoes sold counter does not match")
+      assert.equal(soldCounter.toNumber(), 1, "Shoes sold counter does not match")
 
     // retrieve the shoe details
       let shoe = await CoShoeInstance.shoes(0)
@@ -61,15 +61,12 @@ contract('CoShoe', accounts => {
     
     let CoShoeInstance = await CoShoe.deployed()
     // register a song from account 0
-    await CoShoeInstance.buyShoe(
+    await truffleAssert.reverts(CoShoeInstance.buyShoe(
       name,
       image,
       { value: 0, from: accounts[1] }
-    )
-    // get the number of shoes sold 
-      let soldCounter = await CoShoeInstance.coShoeCount()
+    ))
     
-      assert.equal(soldCounter, 1, "Shoes sold counter does not match, should stay constant")
   })
 
   // ensure that checkPurchases​ returns the correct number of ​true​s
