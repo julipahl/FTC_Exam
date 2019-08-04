@@ -19,9 +19,9 @@ contract CoShoe {
     Shoe[] public shoes; // array holding all the instances of Shoe
 
 // the constructor below creats 100 CoShoe tokens
-    constructor (uint _numberOfShoes) public {
+    constructor () public {
 
-        for (uint i = 1; i <= _numberOfShoes; i++)
+        for (uint i = 1; i <= 100; i++)
         {
         address _owner = msg.sender;
         string memory _name = "";

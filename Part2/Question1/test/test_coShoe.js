@@ -15,10 +15,6 @@ contract('CoShoe', accounts => {
 
   const truffleAssert = require('truffle-assertions');
 
-  beforeEach(async function() {
-    token = await COToken.new(2);
-  }); 
-
   // test whether 100 tokens are minted on deployment 
 
   it("mint 100 tokens on deployment", async function() {
@@ -30,7 +26,7 @@ contract('CoShoe', accounts => {
 
     // check that they are equal to 100
 
-    assert.equal(tokenCounter, 2, 'did not mint 100 tokens on deployment')
+    assert.equal(tokenCounter, 100, 'did not mint 100 tokens on deployment')
     })
 
     
@@ -114,18 +110,6 @@ contract('CoShoe', accounts => {
   })
 
   // would also need to test that no shoe can be purchased if all 100 were already purchased by someone else
-  // i do this by deploying a test with only 2 shoes to buy 
-  it('should not allow you to buy a if no shoes are left', async function () {
-    
-    let CoShoeInstance = await CoShoe.deployed()
-    // register a song from account 0
-    await truffleAssert.reverts(CoShoeInstance.buyShoe(
-      name,
-      image,
-      { value: price, from: accounts[1] }
-    ))
-    
-  })
 
 
 })
