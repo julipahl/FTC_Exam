@@ -1,6 +1,6 @@
 // import the contract artifacts
 
-const CoShoe = artifacts.require('CoShoe') 
+const CoShoe = artifacts.require('./CoShoe.sol') 
 
 
 contract('CoShoe', accounts => {
@@ -10,6 +10,8 @@ contract('CoShoe', accounts => {
   const name = 'Julika'
   const image = 'image.com'
   const price = web3.utils.toWei('0.5', 'ether')
+
+  // const truffleAssert = require('truffle-assertions');
 
   // test whether 100 tokens are minted on deployment 
 
@@ -25,6 +27,7 @@ contract('CoShoe', accounts => {
     assert.equal(tokenCounter, 100, 'did not mint 100 tokens on deployment')
     })
 
+    
     // test that buyShoe​ correctly transfers ownership, sets the name and the image, sets sold,and updates ​soldShoes​ count
 
   it('should change shoe information accordingly when purchase is made ', async function () {
