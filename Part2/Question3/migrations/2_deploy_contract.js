@@ -6,4 +6,9 @@ module.exports = function(deployer) {
     deployer.deploy(CoShoe, contractInstance.address);
   })
 
-}
+// }
+
+// module.exports = async function(deployer) {
+//   const COTokenInstance = await deployer.deploy(COToken, "CoToken", "CO", 0);
+//   await deployer.deploy(CoShoe, COTokenInstance.address)
+// };
