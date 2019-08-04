@@ -13,4 +13,10 @@ I attempt to analyse Bitrust's white paper, another failed ICO. They failed in M
 
 "The foundation of BITRUST cryptocurrency insurance platform is a decentralised exchange and transaction clearing system which eliminates possible fraud and single-point-of-failure risks and prevents the system from external regulation" - they would not be able to control external regulation, which sounds very dodgy.
 
+Additionally there are some spelling mistakes in the whitepaper, which may be a bit dodgy: "further **enhace** the success of the BITRUST project" and "joined **BITRSUT** as Head of Product Development". This is particularly concerning as it was registered as a UK company.
+
+Additionally non of the team members added links to their linkedin profiles or somethings else, and when I searched for Alex Duhamel, nothing came up on linkedin. 
+
+Finally, in the whole of the whitepaper, the actual product description is very short, this is suspicious as such a product is complicated.
+
 Unfortunatly I am not very experienced with white papers, but reading Bitrust's paper did not give me any trust in them. It all sounds like red flags to me. 
