@@ -19,9 +19,9 @@ contract CoShoe {
     Shoe[] public shoes; // array holding all the instances of Shoe
 
 // the constructor below creats 100 CoShoe tokens
-    constructor () public {
+    constructor (uint _numberOfShoes) public {
 
-        for (uint i = 1; i <= 100; i++)
+        for (uint i = 1; i <= _numberOfShoes; i++)
         {
         address _owner = msg.sender;
         string memory _name = "";
@@ -55,7 +55,7 @@ contract CoShoe {
                 shoes[i].sold = true;
 
                 shoesSold = shoesSold + 1; // add number of shoes sold
-            
+
                 return true;
             }
 
@@ -69,19 +69,28 @@ contract CoShoe {
         bool[] memory yourPurchases = new bool[](100); // create memory array to safe gas
 
         for (uint i = 0; i < shoes.length; i++){
-            if(shoes[i].owner == msg.sender){
+            if(shoes[i].owner == msg.sender) {
 
                 yourPurchases[i] = true;
-
-            } else {
-
-                yourPurchases[i] = false;
-
+        
             }
+
         }
 
-        // return yourPurchases;
+        //return (yourPurchases);
     }
+
+// dont understand why the function below did not work
+
+// tried doing the below instead but that does not retrun an array, but only a true or false
+
+ // mapping(address => bool) public theBuyers;
+
+    // function checkPurchases() public returns(bool[] memory) {
+
+    //     theBuyers[msg.sender] = true;
+
+    // }
 
 
 }
