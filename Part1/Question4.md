@@ -1,3 +1,5 @@
+## Question 4
+
 Explain how Libra, as an example of a Proof of Stake protocol , works and what it sadvantages and disadvantages over Proof of Work are
 While Proof of Work (PoW) utilizes energy to answer PoW puzzles, Proof of Stake (PoS) seeks to avoid this issue by attributing mining power to the proportion of coins held by a miner. Miners have to stake an amount of their tokens to have a chance at being selected to validate block transactions, with the goal being to achieve distributed consensus. The idea behind this is that miners will act rationally or otherwise would devalue their own stake.
 
@@ -5,7 +7,10 @@ Libra uses a core data structure which does not contain blocks, hence one could 
 
 #### Advantages
 * The main advantage and reason to Libra for doing this is that PoW has poor performance
-* PoW has high energy/environmental costs. 
+* PoW has high energy/environmental costs (i.e PoS is cheaper and greener)
+* PoW resulted in mining pools to be created (to increase likelihood of success), and so concentrating the mining, resulting in centralization again. 
+* PoS may be more secure, as you would have to own 51% of the crypto to make a malicious attack
 
 #### Disadvantages
-
+* some are worried PoS is not as secure as PoW, as hacking with PoW is very expensive
+* there are worries that PoS leads to the rich getting richer, as they get rewarded for owning more than others, this is not the case with PoW (although one needs to be pretty rich for all the hardware with PoW)
