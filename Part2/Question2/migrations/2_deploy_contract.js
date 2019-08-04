@@ -1,5 +1,5 @@
-const CO = artifacts.require("./CO.sol");
+const COToken = artifacts.require("./COToken.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(CO, "COToken", "CO", 0);
+  deployer.deploy(COToken, "COToken", "CO", 0);
 };

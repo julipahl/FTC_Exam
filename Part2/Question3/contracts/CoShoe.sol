@@ -1,7 +1,10 @@
 pragma solidity >=0.4.21 <0.6.0;
 
+import "./COToken.sol"; // to inherit Co
+
 contract CoShoe {
 
+    COToken coToken;
     // struct for each unique shoe called Shoe, which holds 4 variables used to identify each unique shoe
 
     struct Shoe {
@@ -19,7 +22,7 @@ contract CoShoe {
     Shoe[] public shoes; // array holding all the instances of Shoe
 
 // the constructor below creats 100 CoShoe tokens
-    constructor () public {
+    constructor (address _token) public {
 
         for (uint i = 1; i <= 100; i++)
         {
@@ -30,6 +33,8 @@ contract CoShoe {
 
         shoes.push(Shoe(_owner, _name, _image, _sold));
         }
+
+        coToken = COToken(_token); //give CoShoe the address of our token contract
     }
 
     // for a check I will inculde a count for the number of tokens in shoes array
@@ -41,9 +46,16 @@ contract CoShoe {
         return shoesSold;
     }
 
+    // update thus function to see whether buyer has COTokens
+
     function buyShoe(string memory _name, string memory _image) public payable returns(bool) {
-        require(msg.value == price, "Not the correct Price");
-        // can use msg.value to check whether the price is correct as is carries the value of the transaction in wei
+
+        // need to check whether msg.sender has any COTokens (could be more than 1)
+        require(coToken.balanceOf(msg.sender) > 0, "buyer has no COTokens");
+
+        //transfer tokens to COToken owner
+        address COTokenAddrs = coToken.OwnerAdress();
+        coToken.transferFrom(msg.sender, COTokenAddrs, 1); //transfre 1 token
 
         // check that there are shoes available and the first one that is false get sold, else return false and nothing is executed
         for (uint i = 0; i < shoes.length; i++)
@@ -55,7 +67,7 @@ contract CoShoe {
                 shoes[i].sold = true;
 
                 shoesSold = shoesSold + 1; // add number of shoes sold
-            
+
                 return true;
             }
 

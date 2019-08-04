@@ -1,6 +1,6 @@
 // import the contract artifacts
 
-const COToken = artifacts.require('./CO.sol') 
+const COToken = artifacts.require('./COToken.sol') 
 
 
 contract('COToken', accounts => {

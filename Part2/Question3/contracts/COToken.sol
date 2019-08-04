@@ -3,7 +3,7 @@ pragma solidity >=0.4.21 <0.6.0;
 import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
-contract CO is Ownable {
+contract COToken is Ownable {
 
 // first we implement all the ERC functionalities
 
@@ -17,7 +17,7 @@ contract CO is Ownable {
    string public _name;
    string public _symbol;
    uint public _decimals;
-   address payable _contractOwner;
+   address payable public _contractOwner; // made the owner public
 
    // need a constructor because we are defining a state variable
     constructor(string memory name, string memory symbol, uint decimals) public {
@@ -31,21 +31,25 @@ contract CO is Ownable {
     }
 
     // returns the account balance of another account with address _sender
-   function balanceOf(address _owner) external view returns (uint256){
+   function balanceOf(address _owner) public view returns (uint256){
        return _balances[_owner];
    }
 
   // Total number of tokens in existence
-   function totalSupply() external view returns (uint256) {
+   function totalSupply() public view returns (uint256) {
        return _totalSupply;
    }
 
-   function currentSupply() external view returns (uint256) {
+   function currentSupply() public view returns (uint256) {
        return _currentSupply;
    }
 
+   function OwnerAdress() public view returns (address) {
+       return _contractOwner;
+   }
+
    // Function to check the amount of tokens that an owner("sender") allowed to a recipient.
-   function allowance(address owner, address to) external view returns (uint256){
+   function allowance(address owner, address to) public view returns (uint256){
       return _allowed[owner][to];
    }
 
@@ -70,7 +74,7 @@ contract CO is Ownable {
     }
 
 
-   function transferFrom(address sender, address to, uint256 amount) external returns (bool){
+   function transferFrom(address sender, address to, uint256 amount) public returns (bool){
     require(amount <= _balances[sender], "value must be less than balance");
     require(amount <= _allowed[sender][msg.sender], "value must be less than what is allowed to be sent");
     require(sender != address(0), "cant have that address");
