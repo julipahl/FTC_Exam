@@ -41,15 +41,17 @@ contract('CoShoe', accounts => {
       { value: price, from: accounts[0] }
     )
     // get the number of shoes sold 
-    assert.equal(CoShoeInstance.shoesSold, 1, "Shoes sold counter does not match")
+      let soldCounter = await CoShoeInstance.coShoeCount()
+    
+      assert.equal(soldCounter, 1, "Shoes sold counter does not match")
 
     // retrieve the shoe details
-    let shoe = await CoShoeInstance.shoes(0)
-    // check that they match the original song details
-    assert.equal(shoe['owner'], accounts[0], 'owner does not match')
-    assert.equal(shoe['name'], name, 'name does not match')
-    assert.equal(shoe['image'], image, 'image does not match')
-    assert.equal(shoe['sold'], true, 'sold does not match')
+      let shoe = await CoShoeInstance.shoes(0)
+      // check that they match the original song details
+      assert.equal(shoe['owner'], accounts[0], 'owner does not match')
+      assert.equal(shoe['name'], name, 'name does not match')
+      assert.equal(shoe['image'], image, 'image does not match')
+      assert.equal(shoe['sold'], true, 'sold does not match')
 
   })
 
@@ -65,7 +67,9 @@ contract('CoShoe', accounts => {
       { value: 0, from: accounts[1] }
     )
     // get the number of shoes sold 
-    assert.equal(CoShoeInstance.shoesSold, 1, "Shoes sold counter does not match, and should not have changed")
+      let soldCounter = await CoShoeInstance.coShoeCount()
+    
+      assert.equal(soldCounter, 1, "Shoes sold counter does not match, should stay constant")
   })
 
   // ensure that checkPurchases​ returns the correct number of ​true​s

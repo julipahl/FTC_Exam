@@ -37,6 +37,10 @@ contract CoShoe {
         return shoes.length;
     }
 
+    function shoesSoldCount() public view returns (uint256) {
+        return shoesSold;
+    }
+
     function buyShoe(string memory _name, string memory _image) public payable returns(bool) {
         require(msg.value == price, "Not the correct Price");
         // can use msg.value to check whether the price is correct as is carries the value of the transaction in wei
@@ -51,6 +55,7 @@ contract CoShoe {
                 shoes[i].sold = true;
 
                 shoesSold = shoesSold + 1; // add number of shoes sold
+            
                 return true;
             }
 
